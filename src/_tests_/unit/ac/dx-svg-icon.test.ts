@@ -23,7 +23,7 @@ import '../../../components/ac/dx-svg-icon';
 import { initSessionStorage } from '../../utils';
 
 // Icon imports
-import { svgIconEnd } from '../../../static/assets/svg-input-end-icon';
+import { svgIconEnd } from '../../assets/svg-input-end-icon';
 
 describe('DxSvgIcon component testing', () => {
   before(async () => {

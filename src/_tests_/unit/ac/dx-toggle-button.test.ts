@@ -19,7 +19,7 @@ import { waitFor } from '@testing-library/dom';
 
 // Component imports
 import '../../../components/ac/dx-toggle-button';
-import { svgIconSearch } from '../../../static/assets/svg-search';
+import { svgIconSearch } from '../../assets/svg-search';
 
 // Helper imports
 import { initSessionStorage } from '../../utils';

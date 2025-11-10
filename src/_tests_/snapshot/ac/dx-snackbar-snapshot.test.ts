@@ -27,7 +27,7 @@ import { BUTTON_PARTS, BUTTON_VARIANT, SNACKBAR_TYPE } from '../../../types/cssC
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';
 
 // Icon imports
-import svgClose from '../../../static/assets/close.svg';
+import svgClose from '../../assets/close.svg';
 
 describe('DxSnackbar snapshot testing', () => {
   const simpleMessage = 'This is a simple snackbar message.';

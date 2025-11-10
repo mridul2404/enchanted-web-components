@@ -27,7 +27,7 @@ import { initSessionStorage } from '../../utils';
 import { BREADCRUMBS_ICON_TYPE } from '../../../types/dx-breadcrumbs';
 
 // Icon imports
-import { svgIconInfo } from '../../../static/assets/svg-icon-info';
+import { svgIconInfo } from '../../assets/svg-icon-info';
 
 describe('DxBreadcrumbs component testing', () => {
   before(async () => {

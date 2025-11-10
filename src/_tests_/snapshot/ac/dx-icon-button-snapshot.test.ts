@@ -23,7 +23,7 @@ import '../../../components/ac/dx-icon-button';
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';
 
 // Icon imports
-import addIcon from '../../../static/assets/add-icon.svg';
+import addIcon from '../../assets/add-icon.svg';
 
 function renderHtml() {
   return html`

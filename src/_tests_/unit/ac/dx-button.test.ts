@@ -23,7 +23,7 @@ import '../../../components/ac/dx-button';
 import { initSessionStorage } from '../../utils';
 
 // Icon imports
-import { svgIconSearch } from '../../../static/assets/svg-search';
+import { svgIconSearch } from '../../assets/svg-search';
 
 describe('DxButton component testing', () => {
   before(async () => {

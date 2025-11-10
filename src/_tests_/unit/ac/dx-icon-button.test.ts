@@ -24,7 +24,7 @@ import { ICON_BUTTON_SIZES } from '../../../types/cssClassEnums';
 import { initSessionStorage } from '../../utils';
 
 // Icon imports
-import { svgIconSearch } from '../../../static/assets/svg-search';
+import { svgIconSearch } from '../../assets/svg-search';
 
 describe('DxIconButton component testing', () => {
   before(async () => {

@@ -20,7 +20,7 @@ import { html, render } from 'lit';
 import '../../../components/ac/dx-breadcrumbs';
 
 // Icon imports
-import { svgIconInfo } from '../../../static/assets/svg-icon-info';
+import { svgIconInfo } from '../../assets/svg-icon-info';
 
 // Helper imports
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';

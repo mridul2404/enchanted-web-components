@@ -23,10 +23,10 @@ import '../../../components/ac/dx-toggle-button';
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';
 
 // Icon imports
-import tagIconSelected from '../../../static/assets/tag-selected.svg';
-import tagIcon from '../../../static/assets/tag.svg';
-import listIcon from '../../../static/assets/list.svg';
-import listSelectedIcon from '../../../static/assets/list-selected.svg';
+import tagIconSelected from '../../assets/tag-selected.svg';
+import tagIcon from '../../assets/tag.svg';
+import listIcon from '../../assets/list.svg';
+import listSelectedIcon from '../../assets/list-selected.svg';
 
 function renderHtml() {
   const values = ['cloud-view', 'list-view'];

@@ -25,7 +25,7 @@ import { initSessionStorage } from '../../utils';
 import { DxInputFieldType } from '../../../types/dx-input-select';
 
 // Icon imports
-import { svgIconClear } from '../../../static/assets/svg-clear';
+import { svgIconClear } from '../../assets/svg-clear';
 
 const dxLocalization: Map<string, string> = new Map<string, string>();
 dxLocalization.set('input.textfield.placeholder.type.to.search', 'Type to search');

@@ -24,7 +24,7 @@ import { BUTTON_PARTS, BUTTON_VARIANT } from '../../../types/cssClassEnums';
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';
 
 // Icon imports
-import svgSearchUrl from '../../../static/assets/search.svg';
+import svgSearchUrl from '../../assets/search.svg';
 
 describe('DxButton snapshot testing', () => {
   before(async () => {

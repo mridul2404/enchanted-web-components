@@ -15,8 +15,8 @@
 
 import { DxDataGridColDef } from "../types/dx-data-grid";
 import { SampleDataRow } from "./types";
-import svgIconEdit from '../static/assets/svg-edit.svg';
-import svgIconOverflow from '../static/assets/Overflow-menu--horizontal.svg';
+import svgIconEdit from './assets/svg-edit.svg';
+import svgIconOverflow from './assets/Overflow-menu--horizontal.svg';
 
 export const SEARCH_COMMON_FIELDS = [
   'title',

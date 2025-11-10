@@ -24,8 +24,8 @@ import { HEADER_PARTS } from '../../../types/cssClassEnums';
 import { appendEnchantedStylingLink, SNAPSHOT_WINDOW_HEIGHT, SNAPSHOT_WINDOW_WIDTH } from '../utils';
 
 // Icon imports
-import { svgIconClear } from '../../../static/assets/svg-clear';
-import { svgIconSearch } from '../../../static/assets/svg-search';
+import { svgIconClear } from '../../assets/svg-clear';
+import { svgIconSearch } from '../../assets/svg-search';
 
 const dxLocalization: Map<string, string> = new Map<string, string>();
 dxLocalization.set('input.textfield.placeholder.type.to.search', 'Type to search');
