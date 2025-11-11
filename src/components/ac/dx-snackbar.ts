@@ -24,11 +24,10 @@ import './dx-circular-progress';
 import { SNACKBAR_PARTS, SNACKBAR_TYPE } from '../../types/cssClassEnums';
 
 // Icon imports
-import { svgIconInfo } from '../../static/assets/svg-icon-info';
-import { svgIconWarning } from '../../static/assets/svg-icon-warning';
-import { svgIconError } from '../../static/assets/svg-icon-error';
-import { svgIconSuccess } from '../../static/assets/svg-icon-success';
-
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/checkmark--outline';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/information';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/warning--alt';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/warning';
 
 @customElement('dx-snackbar')
 export class DxSnackbar extends DxAcBaseElement {
@@ -49,23 +48,16 @@ export class DxSnackbar extends DxAcBaseElement {
           </div>
         `;
       } else {
-        const iconMap = {
-          [SNACKBAR_TYPE.SNACKBAR_INFO]: { icon: svgIconInfo },
-          [SNACKBAR_TYPE.SNACKBAR_WARNING]: { icon: svgIconWarning },
-          [SNACKBAR_TYPE.SNACKBAR_ERROR]: { icon: svgIconError },
-          [SNACKBAR_TYPE.SNACKBAR_SUCCESS]: { icon: svgIconSuccess },
-        };
-      
-        const iconConfig = iconMap[this.type];
-
-        return html`
-          <dx-svg-icon
-            data-test-id="dx-snackbar-icon"
-            .icon=${iconConfig.icon}
-            ?useCurrentColor={false}
-            part="${SNACKBAR_PARTS.SNACKBAR_ICON} icon-${this.type}"
-          ></dx-svg-icon>
-        `;
+        switch (this.type) {
+          case SNACKBAR_TYPE.SNACKBAR_INFO:
+            return html`<icon-information size="16" data-test-id="dx-snackbar-icon" part="${SNACKBAR_PARTS.SNACKBAR_ICON} icon-${this.type}"></icon-information>`;
+          case SNACKBAR_TYPE.SNACKBAR_WARNING:
+            return html`<icon-warning-alt size="16" data-test-id="dx-snackbar-icon" part="${SNACKBAR_PARTS.SNACKBAR_ICON} icon-${this.type}"></icon-warning-alt>`;
+          case SNACKBAR_TYPE.SNACKBAR_ERROR:
+            return html`<icon-warning size="16" data-test-id="dx-snackbar-icon" part="${SNACKBAR_PARTS.SNACKBAR_ICON} icon-${this.type}"></icon-warning>`;
+          case SNACKBAR_TYPE.SNACKBAR_SUCCESS:
+            return html`<icon-checkmark-outline size="16" part="${SNACKBAR_PARTS.SNACKBAR_ICON} icon-${this.type}"></icon-checkmark-outline>`;
+        }
       }
     }
 

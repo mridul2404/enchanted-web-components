@@ -24,7 +24,7 @@ import './dx-button';
 import { BUTTON_PARTS, BUTTON_VARIANT, PANEL_PARTS, PANEL_POSITION } from '../../types/cssClassEnums';
 
 // Icon imports
-import svgIconClose from '../../static/assets/close.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
 
 @customElement('dx-panel')
 export class DxPanel extends DxAcBaseElement {
@@ -71,7 +71,7 @@ export class DxPanel extends DxAcBaseElement {
             exportparts="${Object.values(BUTTON_PARTS).join(",")}"
             buttontext=""
             ?outlined="${false}"
-            imgurl="${svgIconClose}"
+            .icon="${html`<icon-close size="16" color="rgba(0, 0, 0, 0.60)"></icon-close>`}"
             @click=${this._handleCloseClick}
             variant=${BUTTON_VARIANT.BUTTON_TEXT_VAR}
           >

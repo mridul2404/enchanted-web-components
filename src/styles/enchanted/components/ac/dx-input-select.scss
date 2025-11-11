@@ -26,6 +26,8 @@
   $part-button-contained-focused: 'button-contained-focused',
   $part-button-contained-disabled: 'button-contained-disabled',
   $part-button-text: 'button-text',
+  $part-button-end-icon: 'button-end-icon',
+  $part-button-start-icon-small-without-padding: 'button-start-icon-small-without-padding',
   $part-div: 'div',
 ) {
   & {
@@ -184,6 +186,14 @@
 
   &::part(div):focus-within &::part(label) {
     color: map.get(themeMap.$enchantedPalette, HCLSOFTWAREBLUE06);
+  }
+
+  &::part(#{$part-button-end-icon}) {
+    display: contents;
+  }
+
+  &::part(#{$part-button-start-icon-small-without-padding}) {
+    display: contents;
   }
 }
 

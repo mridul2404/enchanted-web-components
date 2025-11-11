@@ -27,9 +27,9 @@ import './dx-badge';
 import { BUTTON_PARTS, HEADER_VARIANT, HEADER_PARTS } from '../../types/cssClassEnums';
 
 // Icon imports
-import svgIconBack from '../../static/assets/chevron--left.svg';
-import svgFilter from '../../static/assets/filter.svg';
-import svgSearchUrl from '../../static/assets/search.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--left';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/filter';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/search';
 
 @customElement('dx-header')
 @localized()
@@ -79,7 +79,7 @@ export class DxHeader extends DxAcBaseElement {
               buttontext=''
               ?outlined="${false}"
               data-testid="dx-filter-button"
-              imgurl="${svgFilter}"
+              .icon="${html`<icon-filter size="16" color="currentColor"></icon-filter>`}"
             >
             </dx-button>
             <dx-badge part=${HEADER_PARTS.BADGE_DOT}/>
@@ -89,7 +89,7 @@ export class DxHeader extends DxAcBaseElement {
           <div part=${HEADER_PARTS.HEADER_SPACING_END}>
             <dx-button
               ?disabled="${this.disabled || nothing}"
-              imgurl="${svgSearchUrl}"
+              .icon="${html`<icon-search size="16" color="currentColor"></icon-search>`}"
               buttontext="${this.getMessage('header.enduser.search')}"
               exportparts="${Object.values(BUTTON_PARTS).join(',')}"
               ?outlined="${true}"
@@ -107,14 +107,14 @@ export class DxHeader extends DxAcBaseElement {
     return html`
       <div part=${HEADER_PARTS.HEADER}>
         <div part=${HEADER_PARTS.SUB_HEADER_START}>
-          <div part=${this.isSideNavOpen ? HEADER_PARTS.HEADER_SPACING_START_HAMBURGER : HEADER_PARTS.HEADER_SPACING_START} } >
+          <div part=${this.isSideNavOpen ? HEADER_PARTS.HEADER_SPACING_START_HAMBURGER : HEADER_PARTS.HEADER_SPACING_START} >
             ${this.showBackIcon
               ? html`
               <dx-button 
               buttontext=''
               ?outlined="${false}"
               data-testid="dx-back-button"
-              imgurl="${svgIconBack}"
+              .icon="${html`<icon-chevron-left size="16" color="rgba(0, 0, 0, 0.60)"></icon-chevron-left>`}"
             >
             </dx-button>`
               : nothing

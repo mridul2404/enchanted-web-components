@@ -20,7 +20,6 @@ import { v4 as uuid } from 'uuid';
 
 // Component imports
 import { DxAcBaseElement } from './dx-ac-base-element';
-import './dx-svg-icon';
 
 // Helper imports
 import { DATEPICKER_PARTS } from '../../types/cssClassEnums';
@@ -39,7 +38,8 @@ import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/caret--up';
 import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--left';
 import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--right';
 import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/help';
-import { svgIconDotMark } from '../../static/assets/svg-icon-dot-mark';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/circle--solid';
 import { KeyboardInputKeys } from '../../utils/keyboardEventKeys';
 
 @customElement('dx-datepicker')
@@ -458,12 +458,12 @@ export class DxDatePicker extends DxAcBaseElement {
                         : `${DATEPICKER_PARTS.DATEPICKER_CALENDAR_DATES_TODAY_SPAN} ${DATEPICKER_PARTS.DATEPICKER_CALENDAR_DATES_TODAY_SPAN_RTL}`
                       }"
                     >
-                      <dx-svg-icon
-                        .icon=${svgIconDotMark}
+                      <icon-circle-solid 
+                        color="currentColor"
                         ?useCurrentColor=${false}
                         color="none"
                         size="1px"
-                      ></dx-svg-icon>
+                      ></icon-circle-solid>
                     </span>`
                   : nothing
                 }

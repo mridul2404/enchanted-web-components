@@ -41,12 +41,14 @@ import { TOOLTIP_EXPORT_PARTS } from '../exportParts';
 import { TOOLTIP_PLACEMENT } from '../../types/cssClassEnums';
 
 // Icon imports
-import { svgIconEmptyResult } from '../../static/assets/svg-output-empty-icon';
+import '@hcl-software/enchanted-icons-web-component/dist/apps/es/items--search--empty';
 import { svgIconInitialResult } from '../../static/assets/svg-output-initial-icon';
-import svgIconSortUp from '../../static/assets/arrow--up.svg';
-import svgIconSortDown from '../../static/assets/arrow--down.svg';
-import svgIconEdit from '../../static/assets/svg-edit.svg';
-import svgIconOverflow from '../../static/assets/Overflow-menu--horizontal.svg';
+
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--sort--up';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--sort--down';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/edit';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/overflow-menu--horizontal';
+
 import { KeyboardInputKeys } from '../../utils/keyboardEventKeys';
 
 @customElement('dx-data-grid')
@@ -762,7 +764,7 @@ export class DxDataGrid extends DxAcBaseElement {
 								<div part="${DATA_GRID_PARTS.TABLE_SORT_BUTTON_CONTAINER}">
 									<dx-icon-button
 										data-testid="dx-data-grid-sort-button-${SortOrder.ASC}-${index}"
-										imgurl="${svgIconSortUp}"
+										.icon="${html`<icon-chevron-sort-up></icon-chevron-sort-up>`}"
 										id="dx-data-grid-sort-button-${SortOrder.ASC}-${index}"
 										tabindex=0
 										part="${this.getPartHeaderSort(sortHeaderField, SortOrder.ASC)} ${DATA_GRID_PARTS.TABLE_HEADER_ICON_BUTTON}"
@@ -775,7 +777,7 @@ export class DxDataGrid extends DxAcBaseElement {
 									</dx-icon-button>
 									<dx-icon-button
 										data-testid="dx-data-grid-sort-button-${SortOrder.DESC}-${index}"
-										imgurl="${svgIconSortDown}"
+										.icon="${html`<icon-chevron-sort-down></icon-chevron-sort-down>`}"
 										tabindex=0
 										id="dx-data-grid-sort-button-${SortOrder.DESC}-${index}"
 										part="${this.getPartHeaderSort(sortHeaderField, SortOrder.DESC)} ${DATA_GRID_PARTS.TABLE_HEADER_ICON_BUTTON}"
@@ -922,7 +924,7 @@ export class DxDataGrid extends DxAcBaseElement {
 																			data-testid="dx-data-grid-edit-button-${index}"
 																			id="dx-data-grid-edit-button-${index}"
                                       role="button"
-																			imgurl="${svgIconEdit}"
+																			.icon="${html`<icon-edit></icon-edit>`}"
 																			tabindex=0
 																			exportparts="${ICON_BUTTON_EXPORT_PARTS}"
 																			@click=${(evt: MouseEvent) => { 
@@ -963,7 +965,7 @@ export class DxDataGrid extends DxAcBaseElement {
                                 role="button"
 																data-testid="dx-data-grid-overflow-button-${index}"
 																id="dx-data-grid-overflow-button-${index}"
-																imgurl="${svgIconOverflow}"
+																.icon="${html`<icon-overflow-menu-horizontal></icon-overflow-menu-horizontal>`}"
 																exportparts="${ICON_BUTTON_EXPORT_PARTS}"
 																@focus=${(evt: FocusEvent) => { return this.handleButtonFocus(evt); }}
 																@blur=${(evt: FocusEvent) => { return this.handleButtonBlur(evt); }}
@@ -1010,7 +1012,7 @@ export class DxDataGrid extends DxAcBaseElement {
 	    else if (this.dxDataGridContext?.total === 0) {
 	      return html`
 					<div part="${DATA_GRID_PARTS.TABLE_BODY_CONTAINER}">         
-						<dx-svg-icon .icon=${svgIconEmptyResult} ?useCurrentColor=${true}></dx-svg-icon>
+						<dx-svg-icon .icon=${html`<icon-items-search-empty></icon-items-search-empty>`} ?useCurrentColor=${true}></dx-svg-icon>
 						<p data-testid="table-result-label" part="${DATA_GRID_PARTS.TABLE_RESULT_LABEL}">${this.getMessage('output.message.no.results.found')}</p>
 						<p part="${DATA_GRID_PARTS.TABLE_RESULT_DESCRIPTION}">
 						${unsafeHTML(this.getMessage('output.message.no.match.found', [{ '{search_term}': String(this.dxDataGridContext?.searchValue) }]))}
@@ -1023,7 +1025,7 @@ export class DxDataGrid extends DxAcBaseElement {
 			  console.warn(`${this.getMessage('output.message.no.engine.found')}, ${this.getMessage('output.message.contact.admin')}`);
 	      return html`
 					<div part="${DATA_GRID_PARTS.TABLE_BODY_CONTAINER}">
-						<dx-svg-icon .icon=${svgIconEmptyResult} ?useCurrentColor=${true}></dx-svg-icon>
+						<dx-svg-icon .icon=${html`<icon-items-search-empty></icon-items-search-empty>`} ?useCurrentColor=${true}></dx-svg-icon>
 						<p data-testid="table-result-label" part="${DATA_GRID_PARTS.TABLE_RESULT_LABEL}">${this.getMessage('output.message.no.engine.found')}</p>
 						<p part="${DATA_GRID_PARTS.TABLE_RESULT_DESCRIPTION}">
 						${this.getMessage('output.message.contact.admin')}
@@ -1036,7 +1038,7 @@ export class DxDataGrid extends DxAcBaseElement {
 			  console.warn(`${this.getMessage('output.message.no.content.sources.found')}, ${this.getMessage('output.message.contact.admin')}`);
 	      return html`
 					<div part="${DATA_GRID_PARTS.TABLE_BODY_CONTAINER}"> 
-						<dx-svg-icon .icon=${svgIconEmptyResult} ?useCurrentColor=${true}></dx-svg-icon>
+						<dx-svg-icon .icon=${html`<icon-items-search-empty></icon-items-search-empty>`} ?useCurrentColor=${true}></dx-svg-icon>
 						<p data-testid="table-result-label" part="${DATA_GRID_PARTS.TABLE_RESULT_LABEL}">${this.getMessage('output.message.no.content.sources.found')}</p>
 						<p part="${DATA_GRID_PARTS.TABLE_RESULT_DESCRIPTION}">
 						${this.getMessage('output.message.contact.admin')}

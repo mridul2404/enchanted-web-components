@@ -13,7 +13,7 @@
  * limitations under the License.                                           *
  * ======================================================================== */
 // External imports
-import { html } from 'lit';
+import { html, nothing, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { localized } from '@lit/localize';
 
@@ -25,10 +25,10 @@ import './dx-svg-icon';
 import { ALERT, ALERT_SEVERITY, ALERT_VARIANTS } from '../../types/cssClassEnums';
 
 // Icon imports
-import { svgIconWarning } from '../../static/assets/svg-icon-warning';
-import { svgIconSuccess } from '../../static/assets/svg-icon-success';
-import { svgIconError } from '../../static/assets/svg-icon-error';
-import { svgIconInfo } from '../../static/assets/svg-icon-info';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/checkmark--outline';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/information';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/warning--alt';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/warning';
 
 /**
  * Alert component.
@@ -82,18 +82,18 @@ export class DxAlert extends DxAcBaseElement {
   
   // eslint-why need to allow any kind of type for data property
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private getAlertIcon(): any {
+  private getAlertIcon(): TemplateResult | typeof nothing {
     switch (this.severity) {
       case ALERT_SEVERITY.ALERT_INFO:
-        return svgIconInfo;
+        return html`<icon-information size="16"></icon-information>`;
       case ALERT_SEVERITY.ALERT_ERROR:
-        return svgIconError;
+        return html`<icon-warning size="16"></icon-warning>`;
       case ALERT_SEVERITY.ALERT_WARNING:
-        return svgIconWarning;
+        return html`<icon-warning-alt size="16"></icon-warning-alt>`;
       case ALERT_SEVERITY.ALERT_SUCCESS:
-        return svgIconSuccess;
+        return html`<icon-checkmark-outline size="16"></icon-checkmark-outline>`;
       default:
-        return '';
+        return nothing;
     }
   }
 

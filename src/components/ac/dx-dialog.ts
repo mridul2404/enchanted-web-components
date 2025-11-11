@@ -30,7 +30,7 @@ import { isLTR } from '../localization';
 import { KeyboardInputKeys } from '../../utils/keyboardEventKeys';
 
 // Icon imports
-import { svgClose } from '../../static/assets/svg-close';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
 
 @customElement('dx-dialog')
 @localized()
@@ -183,14 +183,15 @@ export class DxDialog extends DxAcBaseElement {
                         ${this.dialogTitle}
                       </p>
                       <div part=${DIALOG_PARTS.ICON_ROOT}>
-                        <dx-svg-icon
+                        <icon-close
                           part=${DIALOG_PARTS.ICON_CLOSE}
-                          .icon=${svgClose}
+                          color="rgba(0, 0, 0, 0.60)"
+                          size="16"
                           @click=${debounce(this.handleClose, 300)}
                           @keydown=${this.handleCloseByEnterKey}
                           tabindex="0"
                         >
-                        </dx-svg-icon>
+                        </icon-close>
                       </div>
                     </div>`}
               </div>

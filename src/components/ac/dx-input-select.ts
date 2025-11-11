@@ -30,7 +30,7 @@ import { BUTTON_PARTS, INPUT_SELECT_PARTS, LIST_ITEM_PARTS, LIST_PARTS } from '.
 import { DxInputFieldType, OptionData } from '../../types/dx-input-select';
 
 // Icon imports
-import dropDownURL from '../../static/assets/dropdown.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/caret--down';
 import { KeyboardInputKeys } from '../../utils/keyboardEventKeys';
 
 /**
@@ -313,7 +313,7 @@ export class DxInputSelect extends DxAcBaseElement {
           exportparts="${Object.values(BUTTON_PARTS).join(',')}"
           data-testid="dx-input-select-button"
           variant="button"
-          imgurl="${!this.hiddenIcon ? dropDownURL : ''}"
+          .icon="${!this.hiddenIcon ? html`<icon-caret-down size="16" color="rgba(0, 0, 0, 0.60)"></icon-caret-down>` : nothing}"
           ?endicon="${true}"
           ?disabled=${this.disabled}
         >

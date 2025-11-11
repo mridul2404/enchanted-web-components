@@ -31,12 +31,11 @@ import { ICON_BUTTON_EXPORT_PARTS } from '../exportParts';
 import { KeyboardInputKeys } from '../../utils/keyboardEventKeys';
 
 // Icon imports
-import dropDownURL from '../../static/assets/Caret--down.svg';
-import dropUpURL from '../../static/assets/Caret--up.svg';
-import clearIconURL from '../../static/assets/close.svg';
-import closeFilled from '../../static/assets/Close--filled.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/caret--down';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/caret--up';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
 import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close--filled';
-import checkmark from '../../static/assets/Checkmark.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/checkmark';
 
 @customElement('dx-multiple-select-chip')
 @localized()
@@ -399,7 +398,7 @@ export class DxMultipleSelectChip extends DxAcBaseElement {
         : INPUT_MULTI_SELECT_PARTS.CHECKMARK_PLACEHOLDER}"
         >
           ${this.selectedValues.some((v) => { return v.id === id; })
-        ? html`<img src=${checkmark} alt="Selected" />`
+        ? html`<icon-checkmark size="16" alt="Selected" color="rgba(0, 0, 0, 0.60)"></icon-checkmark>`
         : nothing}
         </div>
         <div part="${INPUT_MULTI_SELECT_PARTS.LIST_ITEMS}">
@@ -440,7 +439,7 @@ export class DxMultipleSelectChip extends DxAcBaseElement {
               return this.handleChipRemove(e, id);
             }}
                 >
-                  <img src=${clearIconURL} alt="Clear icon"/>
+                  <icon-close size="16" alt="Clear icon" color="rgba(0, 0, 0, 0.60)"></icon-close>
                 </span>
               `
           : nothing}
@@ -560,7 +559,7 @@ export class DxMultipleSelectChip extends DxAcBaseElement {
         ? html`
               <dx-icon-button
                 part="${this.getPartClearAllIcon()}"
-                imgurl="${closeFilled}"
+                .icon="${html`<icon-close-filled size="16" color="rgba(0, 0, 0, 0.60)"></icon-close-filled>`}"
                 title="${INPUT_MULTI_SELECT_PARTS.CLEAR}"
                 id="${INPUT_MULTI_SELECT_PARTS.CLEAR}"
                 data-testid="dx-multi-select-clear-all-button"
@@ -616,7 +615,10 @@ export class DxMultipleSelectChip extends DxAcBaseElement {
             exportparts="${Object.values(BUTTON_PARTS).join(',')}"
             data-testid="dx-multi-select-button"
             variant="button"
-            imgurl="${this.toggleDropDown ? dropUpURL : dropDownURL}" 
+            .icon="${this.toggleDropDown
+              ? html`<icon-caret-up size="16" color="rgba(0, 0, 0, 0.60)"></icon-caret-up>`
+              : html`<icon-caret-down size="16" color="rgba(0, 0, 0, 0.60)"></icon-caret-down>`
+            }" 
             ?endicon="${true}"
             ?disabled="${this.disabled}"
             aria-label=${this.getMessage('authoring.multi.select.toggle.dropdown')}

@@ -16,7 +16,10 @@
 @use "../../common/palette";
 @use "../../common/typography";
 
-@mixin dx-multiple-select-chip-base-styles {
+@mixin dx-multiple-select-chip-base-styles(
+  $part-clear-all-icon: 'clear-all-icon',
+  $part-clear-all-icon-hidden: 'clear-all-icon-hidden',
+) {
 
   &::part(input-container) {
     border: 1px solid palette.clr(light, action, disabled);

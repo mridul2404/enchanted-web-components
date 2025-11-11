@@ -64,19 +64,19 @@
   }
 
   &::part(icon-info) {
-    fill: palette.clr(dark, info, inverse);
+    color: palette.clr(dark, info, inverse);
   }
 
   &::part(icon-warning) {
-    fill: palette.clr(dark, warning, inverse);
+    color: palette.clr(dark, warning, inverse);
   }
 
   &::part(icon-success) {
-    fill: palette.clr(dark, success, inverse);
+    color: palette.clr(dark, success, inverse);
   }
 
   &::part(icon-error) {
-    fill: palette.clr(dark, error, inverse);
+    color: palette.clr(dark, error, inverse);
   }
 
   div[slot="snackbar-buttons"] {

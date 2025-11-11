@@ -30,14 +30,11 @@ import { DEFAULT_PAGESIZE, DEFAULT_ROWS_OPTIONS, DxPaginationActions } from '../
 import { PAGINATION_SELECT_EXPORT_PARTS } from '../exportParts';
 
 // Icon imports
-import svgPageFirst from '../../static/assets/page--first.svg';
-import svgPageLast from '../../static/assets/page--last.svg';
-import svgChevronLeft from '../../static/assets/chevron--left.svg';
-import svgChevronRight from '../../static/assets/chevron--right.svg';
-import svgPageFirstDisabled from '../../static/assets/page--first--disabled.svg';
-import svgPageLastDisabled from '../../static/assets/page--last--disabled.svg';
-import svgChevronLeftDisabled from '../../static/assets/chevron--left--disabled.svg';
-import svgChevronRightDisabled from '../../static/assets/chevron--right--disabled.svg';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/page--first';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/page--last';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--left';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/chevron--right';
+
 import { LOCALE_DIRECTIONS } from '../constants';
 
 @customElement('dx-table-pagination')
@@ -216,7 +213,17 @@ export class DxTablePagination extends DxAcBaseElement {
               buttontext=''
               ?outlined="${false}"
               ?disabled="${!this.hasPreviousPage}"         
-              imgurl="${isLTR() ? (this.hasPreviousPage ? svgPageFirst : svgPageFirstDisabled) : (this.hasPreviousPage ? svgPageLast : svgPageLastDisabled)}"
+              .icon="${
+                isLTR() ? (
+                  this.hasPreviousPage 
+                    ? html`<icon-page-first size="16" color="rgba(0, 0, 0, 0.60)"></icon-page-first>`
+                    : html`<icon-page-first size="16" color="rgba(0, 0, 0, 0.38)"></icon-page-first>`
+                ) : (
+                  this.hasPreviousPage 
+                    ? html`<icon-page-last size="16" color="rgba(0, 0, 0, 0.60)"></icon-page-last>`
+                    : html`<icon-page-last size="16" color="rgba(0, 0, 0, 0.38)"></icon-page-last>`
+                )
+              }"
               data-testid="${DxPaginationActions.FIRST_PAGE}"
               @click=${debounce(() => { this.handleClick(DxPaginationActions.FIRST_PAGE); }, 300)}
               variant=${BUTTON_VARIANT.BUTTON_TEXT_VAR}
@@ -228,7 +235,17 @@ export class DxTablePagination extends DxAcBaseElement {
               buttontext=''
               ?outlined="${false}"
               ?disabled="${!this.hasPreviousPage}"
-              imgurl="${isLTR() ? (this.hasPreviousPage ? svgChevronLeft: svgChevronLeftDisabled) : (this.hasPreviousPage ? svgChevronRight : svgChevronRightDisabled)}"
+              .icon="${
+                isLTR() ? (
+                  this.hasPreviousPage 
+                    ? html`<icon-chevron-left size="16" color="rgba(0, 0, 0, 0.60)"></icon-chevron-left>`
+                    : html`<icon-chevron-left size="16" color="rgba(0, 0, 0, 0.38)"></icon-chevron-left>`
+                ) : (
+                  this.hasPreviousPage
+                    ? html`<icon-chevron-right size="16" color="rgba(0, 0, 0, 0.60)"></icon-chevron-right>`
+                    : html`<icon-chevron-right size="16" color="rgba(0, 0, 0, 0.38)"></icon-chevron-right>`
+                )
+              }"
               data-testid="${DxPaginationActions.PREVIOUS_PAGE}"
               @click=${debounce(() => { this.handleClick(DxPaginationActions.PREVIOUS_PAGE); }, 300)}
               variant=${BUTTON_VARIANT.BUTTON_TEXT_VAR}
@@ -254,7 +271,17 @@ export class DxTablePagination extends DxAcBaseElement {
               buttontext=''
               ?outlined="${false}"
               ?disabled="${!this.hasNextPage}"
-              imgurl="${isLTR() ? (this.hasNextPage ? svgChevronRight: svgChevronRightDisabled) : (this.hasNextPage ? svgChevronLeft: svgChevronLeftDisabled)}"
+              .icon="${
+                isLTR() ? (
+                  this.hasNextPage
+                    ? html`<icon-chevron-right size="16" color="rgba(0, 0, 0, 0.60)"></icon-chevron-right>`
+                    : html`<icon-chevron-right size="16" color="rgba(0, 0, 0, 0.38)"></icon-chevron-right>`
+                ) : (
+                  this.hasNextPage
+                    ? html`<icon-chevron-left size="16" color="rgba(0, 0, 0, 0.60)"></icon-chevron-left>`
+                    : html`<icon-chevron-left size="16" color="rgba(0, 0, 0, 0.38)"></icon-chevron-left>`
+                )
+              }"
               data-testid="${DxPaginationActions.NEXT_PAGE}"
               @click=${debounce(() => { this.handleClick(DxPaginationActions.NEXT_PAGE); }, 300)}
               variant=${BUTTON_VARIANT.BUTTON_TEXT_VAR}
@@ -266,7 +293,17 @@ export class DxTablePagination extends DxAcBaseElement {
               buttontext=''
               ?outlined="${false}"
               ?disabled="${!this.hasNextPage}"
-              imgurl="${isLTR() ? (this.hasNextPage ? svgPageLast: svgPageLastDisabled) : (this.hasNextPage ? svgPageFirst: svgPageFirstDisabled)}"
+              .icon="${
+                isLTR() ? (
+                  this.hasNextPage
+                    ? html`<icon-page-last size="16" color="rgba(0, 0, 0, 0.60)"></icon-page-last>`
+                    : html`<icon-page-last size="16" color="rgba(0, 0, 0, 0.38)"></icon-page-last>`
+                ) : (
+                  this.hasNextPage
+                    ? html`<icon-page-first size="16" color="rgba(0, 0, 0, 0.60)"></icon-page-first>`
+                    : html`<icon-page-first size="16" color="rgba(0, 0, 0, 0.38)"></icon-page-first>`
+                )
+              }"
               data-testid="${DxPaginationActions.LAST_PAGE}"
               @click=${debounce(() => { this.handleClick(DxPaginationActions.LAST_PAGE); }, 300)}
               variant=${BUTTON_VARIANT.BUTTON_TEXT_VAR}
