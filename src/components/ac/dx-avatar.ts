@@ -37,7 +37,7 @@ export class DxAvatar extends DxAcBaseElement {
   color: AVATAR_COLOR | undefined;
 
   @property()
-  iconTemplate: TemplateResult | string | undefined;
+  iconTemplate: TemplateResult | undefined;
 
   @property()
   avatarText: string | undefined;
