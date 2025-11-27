@@ -14,7 +14,7 @@
  * ======================================================================== */
 export const SHADOW_ROOT_MODE_KEY = 'dx.searchv2.useOpenAcShadowRoot';
 
-export const AUTO_SHOW_SESSION_KEY = 'dx.popover.autoShownSession';
+export const AUTO_SHOW_POPOVER_KEY = 'dx.popover.autoShownSessionKey';
 
 export enum LOCALE_DIRECTIONS {
   LTR = 'ltr',
