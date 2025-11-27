@@ -49,6 +49,7 @@
 - Added `role="status"` and `aria-label` to loading container
 - Wrapped table header and body in `<thead>` and `<tbody>` elements for better semantic structure
 - Using debug instead of console as logging framework. `export DEBUG=enchanted-web-components:*` is enabling the specific debug messages
+- Set the correct border and outline color on the dx-avatar component
 
 ## 1.1.0
 
