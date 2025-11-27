@@ -12,7 +12,7 @@
 
 // External imports
 import { html, nothing } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
 
 //helper import
@@ -44,12 +44,33 @@ export class DxPopover extends DxAcBaseElement {
 
   @property({ type: Boolean }) withpadding = false;
 
-  @state()
-  private isLTR: boolean = getCurrentDirection() === LOCALE_DIRECTIONS.LTR;
-  
-  private _showPopover = () => { this.open = true; };
+  @property({ type: Boolean }) autoShowOnLoad = false;
 
-  private _hidePopover = () => { this.open = false; };
+  @property({ type: Boolean }) disableHover = false;
+
+  private hasAutoShown = false;
+
+  protected firstUpdated() {
+    if (this.autoShowOnLoad && !this.hasAutoShown) {
+      this.open = true;
+      this.hasAutoShown = true;
+    }
+  }
+
+  // Used getter to make sure if the direction changes should update
+  private get isLTR(): boolean {
+    return getCurrentDirection() === LOCALE_DIRECTIONS.LTR;
+  }
+  
+  private _showPopover = () => { 
+    if (this.disableHover) return; // <-- Block hover
+    this.open = true;
+  };
+
+  private _hidePopover = () => {
+    if (this.disableHover) return;
+    this.open = false;
+  };
 
   private _onCloseClick = (e: Event) => {
     e.stopPropagation();

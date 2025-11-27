@@ -4,6 +4,8 @@
 
 ### Added
 - Added a new storybook component for `dx-popover`.
+- Added new property for disabling popover on hover in `dx-popover`.
+- Added new property for auto show popover page load in `dx-popover`.
 
 ### Fixed
 - Refactored `dx-dialog` component to use reactive state properties (`@state()`) for ARIA attributes instead of direct DOM manipulation, improving maintainability and alignment with Lit's reactive programming model

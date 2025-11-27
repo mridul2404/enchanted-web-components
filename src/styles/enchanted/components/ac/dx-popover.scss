@@ -164,6 +164,7 @@
         direction: rtl;
         text-align: right;
         align-items: flex-end;
+        display: flex;
     } 
   
     &::part(arrow) {
@@ -206,7 +207,7 @@
 
     &[arrow="1:00"]::part(arrow) {
         top: -8px;
-        right: 12px;
+        right: 18px;
         transform: rotate(0)
     }
 
