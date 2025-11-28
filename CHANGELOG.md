@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Added
+- Added `ignoreNextFocusOut` flag to `dx-input-select` component.
 
 ### Fixed
 - Refactored `dx-dialog` component to use reactive state properties (`@state()`) for ARIA attributes instead of direct DOM manipulation, improving maintainability and alignment with Lit's reactive programming model
@@ -10,6 +11,7 @@
 - Fixed `dx-breadcrumbs` component list styling by adding `list-style-type: none` to ensure proper rendering
 - Fixed the icon bug for sorting of `dx-data-grid`.
 - Fixed the style bug for filter button in `dx-toggle-button`.
+- Prevent dropdown closing when dragging scrollbar inside `<dx-input-select>`.
 
 ### Changed
 - Changed `dx-dialog` accessibility implementation to use Lit reactive state for `role`, `aria-label`, `tabindex`, and content visibility management
@@ -28,7 +30,6 @@
 - Added `focusOnLoadingContainer()` public method in `dx-data-grid-generic` component
 - Added `focusDialog()` public method in `dx-dialog` component
 - Added `subtitle` part to `dx-data-grid-generic` component.
-- Added `ignoreNextFocusOut` flag to `dx-input-select` component.
 
 ### Fixed
 - Fixed screen reader accessibility in `dx-preview` component by adding proper ARIA labels, roles, and attributes
@@ -40,7 +41,6 @@
 - Improved accessibility of `dx-dialog` component for screen readers
 - Fix `dx-preview` component bug of previewing the same item will open the first index item in preview.
 - Fixed the badge icon position for the rtl.
-- Prevent dropdown closing when dragging scrollbar inside `<dx-input-select>`
 
 ### Changed
 - Changed `dx-preview` backdrop to use `role="presentation"` for better screen reader experience
