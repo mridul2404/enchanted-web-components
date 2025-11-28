@@ -279,39 +279,13 @@
   }
 
   // Visually hidden live region for screen reader announcements
-  // Must be styled from inside shadow DOM using :host selector
-  :host [part="live-region"] {
-    position: absolute !important;
-    z-index: -1 !important;
-    top: 0 !important;
-    left: -10000px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    clip-path: inset(50%) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    opacity: 0 !important;
-  }
-
-  // Also provide external styling via ::part for consumers
+  // Uses the "visually hidden" pattern to hide content from sighted users
+  // while keeping it accessible to screen readers
   &::part(live-region) {
-    position: absolute !important;
-    z-index: -1 !important;
-    top: 0 !important;
-    left: -10000px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    clip-path: inset(50%) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    opacity: 0 !important;
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 }
