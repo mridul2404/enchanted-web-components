@@ -140,3 +140,93 @@ export const DxAvatar: Story = {
     },
   },
 };
+
+export const AllStates: Story = {
+  render: () => {
+    return html`
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div>
+          <h3>Letter Avatars - Rounded</h3>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'AB'}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'CD'} .color=${AVATAR_COLOR.AVATAR_RED}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'EF'} .color=${AVATAR_COLOR.AVATAR_ORANGE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'GH'} .color=${AVATAR_COLOR.AVATAR_YELLOW}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'IJ'} .color=${AVATAR_COLOR.AVATAR_LIME}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'KL'} .color=${AVATAR_COLOR.AVATAR_GREEN}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'MN'} .color=${AVATAR_COLOR.AVATAR_TEAL}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'OP'} .color=${AVATAR_COLOR.AVATAR_BLUE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'QR'} .color=${AVATAR_COLOR.AVATAR_INDIGO}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'ST'} .color=${AVATAR_COLOR.AVATAR_PURPLE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .avatarText=${'UV'} .color=${AVATAR_COLOR.AVATAR_PINK}></dx-avatar>
+          </div>
+        </div>
+
+        <div>
+          <h3>Letter Avatars - Circular</h3>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'AB'}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'CD'} .color=${AVATAR_COLOR.AVATAR_RED}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'EF'} .color=${AVATAR_COLOR.AVATAR_ORANGE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'GH'} .color=${AVATAR_COLOR.AVATAR_YELLOW}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'IJ'} .color=${AVATAR_COLOR.AVATAR_LIME}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'KL'} .color=${AVATAR_COLOR.AVATAR_GREEN}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'MN'} .color=${AVATAR_COLOR.AVATAR_TEAL}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'OP'} .color=${AVATAR_COLOR.AVATAR_BLUE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'QR'} .color=${AVATAR_COLOR.AVATAR_INDIGO}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'ST'} .color=${AVATAR_COLOR.AVATAR_PURPLE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_LETTER} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .avatarText=${'UV'} .color=${AVATAR_COLOR.AVATAR_PINK}></dx-avatar>
+          </div>
+        </div>
+
+        <div>
+          <h3>Icon Avatars</h3>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .iconUrl=${html`<icon-link></icon-link>`}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .iconUrl=${html`<icon-link></icon-link>`}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .iconUrl=${html`<icon-link></icon-link>`} .color=${AVATAR_COLOR.AVATAR_BLUE}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .iconUrl=${html`<icon-link></icon-link>`} .color=${AVATAR_COLOR.AVATAR_BLUE}></dx-avatar>
+          </div>
+        </div>
+
+        <div>
+          <h3>Icon Template Avatars</h3>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON_TEMPLATE} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .iconTemplate=${html`<icon-template></icon-template>`}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_ICON_TEMPLATE} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .iconTemplate=${html`<icon-template></icon-template>`}></dx-avatar>
+            <dx-avatar
+              .variant=${AVATAR_VARIANT.AVATAR_ICON_TEMPLATE}
+              .type=${AVATAR_TYPE.AVATAR_ROUNDED}
+              .iconTemplate=${html`<icon-template></icon-template>`}
+              .color=${AVATAR_COLOR.AVATAR_GREEN}
+            ></dx-avatar>
+            <dx-avatar
+              .variant=${AVATAR_VARIANT.AVATAR_ICON_TEMPLATE}
+              .type=${AVATAR_TYPE.AVATAR_CIRCULAR}
+              .iconTemplate=${html`<icon-template></icon-template>`}
+              .color=${AVATAR_COLOR.AVATAR_GREEN}
+            ></dx-avatar>
+          </div>
+        </div>
+
+        <div>
+          <h3>Image Avatars</h3>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_IMG} .type=${AVATAR_TYPE.AVATAR_ROUNDED} .imgUrl=${testAvatarImageUrl}></dx-avatar>
+            <dx-avatar .variant=${AVATAR_VARIANT.AVATAR_IMG} .type=${AVATAR_TYPE.AVATAR_CIRCULAR} .imgUrl=${testAvatarImageUrl}></dx-avatar>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Comprehensive showcase of all avatar variants, types, and colors. '
+          + 'Demonstrates letter avatars in all 11 colors with both rounded and circular shapes, '
+          + 'icon avatars, icon template avatars, and image avatars. '
+          + 'This provides a complete reference for all available avatar configurations.',
+      },
+    },
+  },
+};
