@@ -20,7 +20,12 @@
 @use "../../common/typography";
 
 @mixin dx-preview-base-styles {
-  &{--zoom-scale-factor: 1};
+  &{
+    --zoom-scale-factor: 1;
+    --media-visibility: hidden;
+    --image-natural-width: 0;
+    --image-natural-height: 0;
+  }
   
   &::part(preview-backdrop) {
     display: none;
@@ -87,25 +92,55 @@
   }
 
   &::part(preview-item-container) {
-    display: flex;
+    position: relative;
     flex: 1;
-    flex-flow: wrap;
     width: 100%;
-    justify-content: center;
-    align-items: center;
     height: calc(100% - 66px);
+    overflow: hidden;
+  }
+
+  &::part(preview-item-image-wrapper) {
+    display: inline-block;
+    line-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: width 180ms ease, height 180ms ease;
   }
 
   &::part(preview-item-image) {
+    opacity: 1;
+    display: block;
+    visibility: var(--media-visibility);
+    margin: 0;
+    padding: 0;
+    transition: transform 180ms ease, transform-origin 180ms ease;
+  }
+
+  &:not([data-zoomed="true"])::part(preview-item-image) {
     max-width: 100%;
     max-height: 100%;
     object-fit: scale-down;
-    margin: 0 auto;
-    box-shadow: map.get(themeMap.$enchantedPalette, shadows1);
-    transition: transform 0.3s;
-    transform: scale(var(--zoom-scale-factor));
-    opacity: 1;
     transform-origin: center center;
+  }
+
+  &[data-zoomed="true"]::part(preview-item-image) {
+    transform-origin: top left;
+  }
+
+  &[data-zoomed="true"]::part(preview-item-image-wrapper) {
+    max-width: none;
+    max-height: none;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  &[data-zoomed="true"]::part(preview-item-image) {
+    max-width: none;
+    max-height: none;
+    object-fit: none;
+    transform-origin: top left;
   }
 
   &::part(preview-item-video-container) {
@@ -117,6 +152,7 @@
     object-fit: contain;
     width: 100%;
     height: 100%;
+    visibility: var(--media-visibility);
   }
 
   &::part(preview-item-content) {
@@ -278,13 +314,21 @@
   }
 
   &::part(preview-item-content-container) {
-    position: relative;
-    display: flex;
-    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100% - 66px);
+    overflow: hidden;
+  }
+
+  &[data-zoomed="true"]::part(preview-item-content-container) {
+    overflow: auto;
+    display: block;
+    text-align: center;
   }
 
   &::part(preview-item-spinner-container) {
