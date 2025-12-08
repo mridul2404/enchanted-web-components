@@ -21,6 +21,7 @@
 - Adjust `dx-snackbar` stylings
 
 ### Breaking changes
+- Adjust the `dx-chip` interface, `iconUrl` is renamed to `icon`
 
 ## 1.4.0
 
