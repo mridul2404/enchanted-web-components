@@ -264,7 +264,7 @@ export class DxDialog extends DxAcBaseElement {
               tabindex="-1"
               aria-modal="true"
             >
-              <div ?part=${this.overrideTitle ? DIALOG_PARTS.TITLE : ""}>
+              <div part="${!this.overrideTitle ? DIALOG_PARTS.TITLE : nothing}">
                 ${this.overrideTitle
                   ? html`<slot name="title"></slot>`
                   : html`
@@ -276,7 +276,7 @@ export class DxDialog extends DxAcBaseElement {
                         <icon-close
                           part=${DIALOG_PARTS.ICON_CLOSE}
                           color="rgba(0, 0, 0, 0.60)"
-                          size="16"
+                          size="20"
                           @click=${debounce(this.handleClose, 300)}
                           @keydown=${this.handleCloseByEnterKey}
                           tabindex="0"
