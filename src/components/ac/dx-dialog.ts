@@ -108,6 +108,24 @@ export class DxDialog extends DxAcBaseElement {
   }
 
   /**
+   * Type guard to check if an element has a shadowRoot property.
+   * @param element - The element to check
+   * @returns true if the element has a valid shadowRoot
+   */
+  private _hasShadowRoot(element: HTMLElement): element is HTMLElement & { shadowRoot: ShadowRoot } {
+    return 'shadowRoot' in element && element.shadowRoot instanceof ShadowRoot;
+  }
+
+  /**
+   * Type guard to check if an element has a renderRoot property (Lit components).
+   * @param element - The element to check
+   * @returns true if the element has a valid renderRoot
+   */
+  private _hasRenderRoot(element: HTMLElement): element is HTMLElement & { renderRoot: ShadowRoot } {
+    return 'renderRoot' in element && (element as unknown as { renderRoot: unknown }).renderRoot instanceof ShadowRoot;
+  }
+
+  /**
    * Recursively searches through web component shadow DOMs to find the deepest focusable element.
    * @param element - The element to start searching from
    */
@@ -118,7 +136,7 @@ export class DxDialog extends DxAcBaseElement {
 
     while (currentElement) {
       // Check if current element has shadowRoot
-      if ('shadowRoot' in currentElement && currentElement.shadowRoot) {
+      if (this._hasShadowRoot(currentElement)) {
         const shadowFocusable = currentElement.shadowRoot.querySelector(DxDialog.FOCUSABLE_SELECTOR) as HTMLElement;
         if (shadowFocusable) {
           currentElement = shadowFocusable;
@@ -127,8 +145,8 @@ export class DxDialog extends DxAcBaseElement {
         }
       }
       // Check renderRoot if shadowRoot doesn't exist (for Lit components)
-      else if ('renderRoot' in currentElement && (currentElement as unknown as { renderRoot: ShadowRoot }).renderRoot) {
-        const renderRootFocusable = (currentElement as unknown as { renderRoot: ShadowRoot }).renderRoot.querySelector(DxDialog.FOCUSABLE_SELECTOR) as HTMLElement;
+      else if (this._hasRenderRoot(currentElement)) {
+        const renderRootFocusable = currentElement.renderRoot.querySelector(DxDialog.FOCUSABLE_SELECTOR) as HTMLElement;
         if (renderRootFocusable) {
           currentElement = renderRootFocusable;
           foundFocusable = renderRootFocusable;
