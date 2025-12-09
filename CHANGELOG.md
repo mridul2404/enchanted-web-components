@@ -3,10 +3,17 @@
 ## Unreleased
 
 ### Added
+- Added new `placement` and `size` property for `dx-menu` component.
+- Added `icons` property to `dx-toggle-button` component to support enchanted-icons (TemplateResult array) alongside existing `iconUrls` (string array) for dual-button mode.
+- Added `clearIcon` and `actionIcon` properties to `dx-input-textfield` component to support enchanted-icons (TemplateResult) for icon rendering.
 
 ### Fixed
 
 ### Changed
+- Refactored menu placement logic using a switch statement for clarity and maintainability.
+- Updated `dx-toggle-button` component to support both enchanted-icons via `icons` property and static SVG URLs via `iconUrls` property with fallback logic (`icons[0] || iconUrls[0]`).
+- Updated `dx-input-textfield` component to use `clearIcon` and `actionIcon` properties (TemplateResult) instead of URL-based icons.
+- Updated `dx-input-textfield` storybook to use enchanted-icons (`icon-close`, `icon-search`) from `@hcl-software/enchanted-icons-web-component`.
 
 ### Breaking changes
 

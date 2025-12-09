@@ -13,7 +13,7 @@
  * limitations under the License.                                           *
  * ======================================================================== */
 // External imports
-import { html, nothing } from 'lit';
+import { html, nothing, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { localized } from '@lit/localize';
 import { debounce } from 'lodash';
@@ -64,11 +64,11 @@ export class DxInputTextfield extends DxAcBaseElement {
   @property({ type: Boolean }) 
   ignoreDisable = false;
 
-  @property({ type: String })
-  clearIconUrl = '';
+  @property()
+  clearIcon?: TemplateResult;
 
-  @property({ type: String })
-  actionIconUrl = '';
+  @property()
+  actionIcon?: TemplateResult;
 
   @property()
   field: DxInputFieldType | string = '';
@@ -88,6 +88,14 @@ export class DxInputTextfield extends DxAcBaseElement {
   @state()
   private isRTL = getCurrentDirection() === LOCALE_DIRECTIONS.RTL;
 
+  private get hasClear(): boolean {
+    return !!this.clearIcon;
+  }
+
+  private get hasAction(): boolean {
+    return !!this.actionIcon;
+  }
+  
   connectedCallback(): void {
     super.connectedCallback();
   }
@@ -221,10 +229,10 @@ export class DxInputTextfield extends DxAcBaseElement {
       case INPUT_TEXTFIELD_PARTS.INPUT: {
         part = INPUT_TEXTFIELD_PARTS.INPUT;
         if (this.disabled) part = `${INPUT_TEXTFIELD_PARTS.INPUT} ${INPUT_TEXTFIELD_PARTS.INPUT_DISABLED}`;
-        if (this.clearIconUrl || this.actionIconUrl) part = `${part} ${this.isRTL
+        if (this.hasClear || this.hasAction) part = `${part} ${this.isRTL
           ? INPUT_TEXTFIELD_PARTS.INPUT_ICON_CLEAR_RTL
           : INPUT_TEXTFIELD_PARTS.INPUT_ICON_CLEAR}`;
-        if (this.clearIconUrl && this.actionIconUrl) part = `${part} ${this.isRTL
+        if (this.hasClear && this.hasAction) part = `${part} ${this.isRTL
           ? INPUT_TEXTFIELD_PARTS.INPUT_ICON_BOTH_RTL
           : INPUT_TEXTFIELD_PARTS.INPUT_ICON_BOTH}`;
       }
@@ -274,34 +282,33 @@ export class DxInputTextfield extends DxAcBaseElement {
           aria-label=${this.ariaLabel || this.placeholder || this.getMessage('input.textfield.placeholder.type.to.search')}
         />
         <!-- This icon will take color from the parent component as useCurrentColor set to true -->
-        ${this.clearIconUrl
+        ${this.hasClear
           ? html`
-          <dx-svg-icon
+          <div
             tabIndex=2
             @click=${this.handleClear}
             @keydown=${this.handleClearEnter}
             data-testid="dx-clear-icon"
-            .icon=${this.clearIconUrl}
-            ?useCurrentColor=${true}
             aria-label=${this.getMessage('input.textfield.clear')}
             part="${this.getInputParts(INPUT_TEXTFIELD_PARTS.ICON_CLEAR)}"
             role="button"
-          />`
+          >
+            ${this.clearIcon }
+          </div>`
           : nothing}
-        <!-- This icon will take color from the parent component as useCurrentColor set to true -->
-        ${this.actionIconUrl
+        ${this.hasAction
           ? html`
-          <dx-svg-icon
-            .icon=${this.actionIconUrl}
-            ?useCurrentColor=${false}
+          <div
             @click=${this.handleSearch}
             @keydown=${this.handleEnterSearch}
-            tabIndex=${this.disabled ? -1 : 3}
             data-testid="dx-action-icon"
             aria-label=${this.getMessage('input.textfield.action')}
             part="${this.getInputParts(INPUT_TEXTFIELD_PARTS.ICON_ACTION)}"
             role="button"
-          />`
+            tabindex=${this.disabled ? -1 : 3}
+          >
+            ${this.actionIcon}
+          </div>`
           : nothing}
       </div>
     `;    
@@ -312,5 +319,4 @@ declare global {
   interface HTMLElementTagNameMap {
     'dx-input-textfield': DxInputTextfield
   }
-}
-
+} 

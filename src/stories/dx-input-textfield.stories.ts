@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import '../components/ac/dx-input-textfield';
-import { svgIconClear } from '../_tests_/assets/svg-clear';
-import { svgIconSearch } from '../_tests_/assets/svg-search';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/close';
+import '@hcl-software/enchanted-icons-web-component/dist/carbon/es/search';
 
 /**
  * @interface DxInputTextfieldProps
@@ -13,8 +13,8 @@ import { svgIconSearch } from '../_tests_/assets/svg-search';
  * @property label - The label for the textfield.
  * @property placeholder - The placeholder text for the textfield.
  * @property disabled - If true, disables the textfield.
- * @property clearIconUrl - The URL for the clear icon.
- * @property actionIconUrl - The URL for the action icon.
+ * @property clearIcon - The TemplateResult for the clear icon.
+ * @property actionIcon - The TemplateResult for the action icon.
  */
 export interface DxInputTextfieldProps {
   value?: string;
@@ -22,8 +22,8 @@ export interface DxInputTextfieldProps {
   label?: string;
   placeholder?: string;
   disabled?: boolean;
-  clearIconUrl?: string;
-  actionIconUrl?: string;
+  clearIcon?: unknown;
+  actionIcon?: unknown;
 }
 
 const meta: Meta<DxInputTextfieldProps> = {
@@ -35,8 +35,8 @@ const meta: Meta<DxInputTextfieldProps> = {
     label: { control: 'text', description: 'The label for the textfield.', table: { defaultValue: { summary: '' } } },
     placeholder: { control: 'text', description: 'The placeholder text for the textfield.', table: { defaultValue: { summary: '' } } },
     disabled: { control: 'boolean', description: 'If true, disables the textfield.', table: { defaultValue: { summary: 'false' } } },
-    clearIconUrl: { control: 'text', description: 'The URL for the clear icon.', table: { defaultValue: { summary: '' } } },
-    actionIconUrl: { control: 'text', description: 'The URL for the action icon.', table: { defaultValue: { summary: '' } } },
+    clearIcon: { control: false, description: 'The TemplateResult for the clear icon.', table: { defaultValue: { summary: 'TemplateResult' } } },
+    actionIcon: { control: false, description: 'The TemplateResult for the action icon.', table: { defaultValue: { summary: 'TemplateResult' } } },
   },
   args: {
     value: '',
@@ -44,8 +44,8 @@ const meta: Meta<DxInputTextfieldProps> = {
     label: 'Text Field',
     placeholder: 'Enter text',
     disabled: false,
-    clearIconUrl: '',
-    actionIconUrl: '',
+    clearIcon: undefined,
+    actionIcon: undefined,
   },
   render: (args) => {return html`
     <dx-input-textfield
@@ -54,8 +54,8 @@ const meta: Meta<DxInputTextfieldProps> = {
       label="${args.label}"
       placeholder="${args.placeholder}"
       ?disabled=${args.disabled}
-      .clearIconUrl=${svgIconClear}
-      .actionIconUrl=${svgIconSearch}
+      .clearIcon=${html`<icon-close size="16" color="currentColor"></icon-close>`}
+      .actionIcon=${html`<icon-search size="16" color="currentColor"></icon-search>`}
     ></dx-input-textfield>
   `;},
 };
@@ -94,14 +94,14 @@ export const AllStates: Story = {
         <div>With Clear Icon</div>
         <dx-input-textfield
           label="Text Field"
-          clearIconUrl="https://cdn-icons-png.flaticon.com/512/1828/1828778.png"
+          .clearIcon=${html`<icon-close size="16" color="currentColor"></icon-close>`}
         ></dx-input-textfield>
       </div>
       <div>
         <div>With Action Icon</div>
         <dx-input-textfield
           label="Text Field"
-          actionIconUrl="https://cdn-icons-png.flaticon.com/512/709/709586.png"
+          .actionIcon=${html`<icon-search size="16" color="currentColor"></icon-search>`}
         ></dx-input-textfield>
       </div>
     </div>
