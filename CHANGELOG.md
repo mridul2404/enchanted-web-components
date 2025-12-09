@@ -7,16 +7,11 @@
 - Added RTL support for `dx-dialog` default title layout.
 
 ### Fixed
-- Fixed `dx-dialog` focus management by simplifying focus sequence and improving accessibility for slotted content.
-- Fixed `dx-dialog` to properly handle focus on nested web components with shadow DOM.
 - Fixed `dx-dialog` close button positioning.
 - Truncated title text in `dx-dialog` if overflowing.
 
-### Changed
-- Refactored `dx-dialog` focus management to remove reactive state properties and simplify accessibility implementation.
-- Simplified `dx-dialog` focus announcement sequence for better performance and cleaner code.
-
-### Breaking changes
+### Breaking Changes
+- Changed `dx-dialog` focus behavior to immediately focus the first focusable element (prioritizing slotted content) instead of focusing the dialog element first.
 
 ## 1.4.0
 
