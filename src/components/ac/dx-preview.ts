@@ -169,7 +169,6 @@ export class DxPreview extends DxAcBaseElement {
     requestAnimationFrame(() => {
       const wrapper = this.renderRoot?.querySelector('#preview-item-image-wrapper') as HTMLElement | null;
       const img = this.renderRoot?.querySelector('#preview-item-image') as HTMLImageElement | null;
-      const container = this.renderRoot?.querySelector('#preview-item-content-container') as HTMLElement | null;
 
       if (wrapper && img && img.naturalWidth && img.naturalHeight) {
         const scale = this.zoomPercentage / 100;
@@ -186,25 +185,6 @@ export class DxPreview extends DxAcBaseElement {
         // Clear transform as we're using direct dimensions
         img.style.transform = '';
         img.style.transformOrigin = '';
-
-        console.log('Zoom Debug:', {
-          zoomPercentage: this.zoomPercentage,
-          isZoomedIn: this.isZoomedIn,
-          hostHasZoomedClass: this.classList.contains('zoomed'),
-          scale,
-          naturalWidth: img.naturalWidth,
-          naturalHeight: img.naturalHeight,
-          scaledWidth,
-          scaledHeight,
-          wrapperWidth: wrapper.offsetWidth,
-          wrapperHeight: wrapper.offsetHeight,
-          wrapperComputedWidth: window.getComputedStyle(wrapper).width,
-          wrapperComputedHeight: window.getComputedStyle(wrapper).height,
-          containerWidth: container?.offsetWidth,
-          containerHeight: container?.offsetHeight,
-          containerOverflow: container ? window.getComputedStyle(container).overflow : 'N/A',
-          wrapperPosition: wrapper ? window.getComputedStyle(wrapper).position : 'N/A',
-        });
       }
     });
   }

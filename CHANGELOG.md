@@ -6,6 +6,7 @@
 - Added new `placement` and `size` property for `dx-menu` component.
 
 ### Fixed
+- Fixed `dx-preview` image zoom functionality to enable scrolling on all sides when zoomed beyond 100%.
 
 ### Changed
 - Refactored menu placement logic using a switch statement for clarity and maintainability.
