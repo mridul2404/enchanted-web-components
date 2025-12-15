@@ -45,16 +45,6 @@ export class DxCircularProgress extends DxAcBaseElement {
       opacity: 1;
     }
 
-    .dx-circular-progress-circle {
-      stroke-dasharray: 80px, 200px;
-      stroke-dashoffset: 0;
-      animation: dx-circular-dash 1.4s ease-in-out infinite;
-    }
-
-    .dx-circular-progress-circle.disable-shrink {
-      animation: dx-circular-rotate 1.4s linear infinite;
-    }
-
     @keyframes dx-circular-rotate {
       0% {
         transform: rotate(0deg);
@@ -66,15 +56,12 @@ export class DxCircularProgress extends DxAcBaseElement {
 
     @keyframes dx-circular-dash {
       0% {
-        stroke-dasharray: 1px, 200px;
         stroke-dashoffset: 0;
       }
       50% {
-        stroke-dasharray: 100px, 200px;
         stroke-dashoffset: -15px;
       }
       100% {
-        stroke-dasharray: 100px, 200px;
         stroke-dashoffset: -125px;
       }
     }
@@ -94,21 +81,15 @@ export class DxCircularProgress extends DxAcBaseElement {
 
   /**
    * Color of the track (background circle)
-   * @default 'rgba(0, 0, 0, 0.12)'
+   * @default '#D6D6D6'
    */
   @property({ type: String }) trackcolor = '#D6D6D6'; // equivalent to $NG200 in ac.scss
 
   /**
    * Color of the progress indicator
-   * @default '#1976d2'
+   * @default '#0550DC'
    */
   @property({ type: String }) progresscolor = '#0550DC'; // equivalent to $HCLSOFTWAREBLUE06 in ac.scss
-
-  /**
-   * Disables the shrink animation for performance in high CPU load scenarios
-   * @default false
-   */
-  @property({ type: Boolean }) disableshrink = false;
 
   /**
    * Get the circumference of the circle
@@ -132,9 +113,8 @@ export class DxCircularProgress extends DxAcBaseElement {
   }
 
   render() {
-    const dashLength = this.disableshrink ? this.circumference * 0.8 : undefined;
-    const dashGap = this.disableshrink ? this.circumference * 0.2 : undefined;
-
+    const dashLength = this.circumference * 0.8;
+    const gapLength = this.circumference - dashLength;
     return html`
       <div class="dx-circular-progress-root" style="width: ${this.size}px; height: ${this.size}px;">
         <svg
@@ -153,15 +133,14 @@ export class DxCircularProgress extends DxAcBaseElement {
           />
           <!-- Progress circle -->
           <circle
-            class="dx-circular-progress-circle ${this.disableshrink ? 'disable-shrink' : ''}"
+            class="dx-circular-progress-circle"
             cx="${this.viewBoxSize}"
             cy="${this.viewBoxSize}"
             r="${this.radius}"
             fill="none"
             stroke="${this.progresscolor}"
             stroke-width="${this.strokewidth}"
-            stroke-dasharray="${dashLength !== undefined ? `${dashLength} ${dashGap}` : `${this.circumference * 0.8} ${this.circumference * 0.2}`}"
-            stroke-dashoffset="0"
+            stroke-dasharray="${dashLength}, ${gapLength}"
             stroke-linecap="round"
           />
         </svg>

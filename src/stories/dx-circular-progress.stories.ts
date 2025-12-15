@@ -12,27 +12,27 @@ const meta: Meta = {
       description: 'Size of the circular progress in pixels',
       defaultValue: 40,
     },
+    strokewidth: {
+      control: { type: 'number', min: 1, max: 20, step: 0.1 },
+      description: 'Stroke width of the progress circle in pixels',
+      defaultValue: 3.6,
+    },
     trackcolor: {
       control: { type: 'color' },
       description: 'Color of the track (background circle)',
-      defaultValue: 'rgba(0, 0, 0, 0.12)',
+      defaultValue: '#D6D6D6',
     },
     progresscolor: {
       control: { type: 'color' },
       description: 'Color of the progress indicator',
-      defaultValue: '#1976d2',
-    },
-    disableshrink: {
-      control: 'boolean',
-      description: 'Disables the shrink animation for better performance under high CPU load',
-      defaultValue: false,
+      defaultValue: '#0550DC',
     },
   },
   args: {
     size: 40,
-    trackcolor: 'rgba(0, 0, 0, 0.12)',
-    progresscolor: '#1976d2',
-    disableshrink: false,
+    strokewidth: 3.6,
+    trackcolor: '#D6D6D6',
+    progresscolor: '#0550DC',
   },
   parameters: {
     docs: {
@@ -49,9 +49,9 @@ export default meta;
 
 type Story = StoryObj<{
   size: number;
+  strokewidth: number;
   trackcolor: string;
   progresscolor: string;
-  disableshrink: boolean;
 }>;
 
 /**
@@ -68,9 +68,9 @@ export const Default: Story = {
     return html`
       <dx-circular-progress
         .size=${args.size}
+        .strokewidth=${args.strokewidth}
         .trackcolor=${args.trackcolor}
         .progresscolor=${args.progresscolor}
-        ?disableshrink=${args.disableshrink}
       ></dx-circular-progress>
     `;
   },
