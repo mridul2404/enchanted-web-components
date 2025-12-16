@@ -3,42 +3,129 @@
 ## Unreleased
 
 ### Added
+
+### Fixed
+
+### Changed
+
+### Breaking changes
+
+## 3.0.0
+
+### Breaking changes
+
+- Type Renaming
+
+    All type, enum and interface have been renamed from `Dx*` prefix to `Enchanted*` prefix:
+
+    | **Old Name (Dx)** | **New Name (Enchanted)** |
+    |-------------------|---------------------------|
+    | DxDataGridColDef | EnchantedDataGridColDef |
+    | DxMenuPlacement | EnchantedMenuPlacement |
+    | DxMenuSize | EnchantedMenuSize |
+
+- Folder Restructuring
+
+    Refactored folder structure: renamed `ac` directories to `atomic-component` across the codebase.
+
+- SCSS File and Styling Prefix Renaming
+
+    All SCSS files in `src/styles/enchanted/components/atomic-component/` have been renamed from `dx-*.scss` to `enchanted-*.scss`:
+
+    - Renamed all component SCSS files to use `enchanted-` prefix instead of `dx-` prefix
+    - Updated all mixin names from `dx-*-base-styles` to `enchanted-*-base-styles` across all component stylesheets
+    - Updated all CSS part selectors and class references to use `enchanted-` prefix for consistency
+
+    **Examples:**
+    - `dx-button.scss` → `enchanted-button.scss` with mixin `enchanted-button-base-styles`
+    - `dx-preview.scss` → `enchanted-preview.scss` with mixin `enchanted-preview-base-styles`
+    - `dx-select.scss` → `enchanted-select.scss` with mixin `enchanted-select-base-styles`
+
+- Web Component Renaming
+
+    All web components have been renamed from `dx-*` prefix to `enchanted-*` prefix:
+
+    | **Old Name (dx-)** | **New Name (enchanted-)** |
+    |-------------------|---------------------------|
+    | dx-ac-base-element | enchanted-ac-base-element |
+    | dx-accordion | enchanted-accordion |
+    | dx-accordion-summary | enchanted-accordion-summary |
+    | dx-alert | enchanted-alert |
+    | dx-anchor | enchanted-link |
+    | dx-avatar | enchanted-avatar |
+    | dx-badge | enchanted-badge |
+    | dx-breadcrumbs | enchanted-breadcrumbs |
+    | dx-breadcrumbs-item | enchanted-breadcrumbs-item |
+    | dx-button | enchanted-button |
+    | dx-chip | enchanted-chip |
+    | dx-circular-progress | enchanted-circular-progress |
+    | dx-data-grid | enchanted-data-grid |
+    | dx-data-grid-generic | enchanted-data-grid-generic |
+    | dx-datepicker | enchanted-datepicker |
+    | dx-dialog | enchanted-dialog |
+    | dx-header | enchanted-header |
+    | dx-header-layout | enchanted-header-layout |
+    | dx-icon-button | enchanted-icon-button |
+    | dx-input-select | enchanted-select |
+    | dx-input-textfield | enchanted-textfield |
+    | dx-item-type-avatar | enchanted-item-type-avatar |
+    | dx-list | enchanted-list |
+    | dx-list-item | enchanted-list-item |
+    | dx-menu | enchanted-menu |
+    | dx-menu-item | enchanted-menu-item |
+    | dx-multiple-select-chip | enchanted-multiple-select-chip |
+    | dx-panel | enchanted-panel |
+    | dx-popover | enchanted-popover |
+    | dx-preview | enchanted-preview |
+    | dx-search-center-layout | enchanted-search-center-layout |
+    | dx-snackbar | enchanted-snackbar |
+    | dx-svg-icon | enchanted-svg-icon |
+    | dx-switch | enchanted-switch |
+    | dx-table-pagination | enchanted-table-pagination |
+    | dx-theme-inspector | enchanted-theme-inspector |
+    | dx-toggle-button | enchanted-toggle-button |
+    | dx-tooltip | enchanted-tooltip |
+
+## 2.0.0
+
+### Added
 - Added new `placement` and `size` property for `dx-menu` component.
 - Added `icons` property to `dx-toggle-button` component to support enchanted-icons (TemplateResult array) alongside existing `iconUrls` (string array) for dual-button mode.
 - Added `clearIcon` and `actionIcon` properties to `dx-input-textfield` component to support enchanted-icons (TemplateResult) for icon rendering.
-- Add `dx-data-grid-generic` storybook story
-- Add `icon` property to the `dx-chip` component
+- Added `dx-data-grid-generic` storybook story
+- Added `icon` property to the `dx-chip` component
 - Added a new storybook for the theme inspector and also added some new color tokens.
 - Added comprehensive accessibility focus tests for `dx-dialog` component.
 - Added RTL support for `dx-dialog` default title layout.
 
 ### Fixed
-- Fix the `XS` size of the `dx-dialog` component
-- Fix the `disabled` state for the `dx-header` component
+- Fixed `dx-preview` image zoom functionality to enable scrolling on all sides when zoomed beyond 100%.
+- Fixed the `XS` size of the `dx-dialog` component
+- Fixed the `disabled` state for the `dx-header` component
 - Fixed `dx-dialog` close button positioning.
-- Truncated title text in `dx-dialog` if overflowing.
+- Fixed truncated title text in `dx-dialog` if overflowing.
 
 ### Changed
 - Refactored menu placement logic using a switch statement for clarity and maintainability.
 - Updated `dx-toggle-button` component to support both enchanted-icons via `icons` property and static SVG URLs via `iconUrls` property with fallback logic (`icons[0] || iconUrls[0]`).
 - Updated `dx-input-textfield` component to use `clearIcon` and `actionIcon` properties (TemplateResult) instead of URL-based icons.
 - Updated `dx-input-textfield` storybook to use enchanted-icons (`icon-close`, `icon-search`) from `@hcl-software/enchanted-icons-web-component`.
-- Check and rework all storybook stories
-- Adjust `dx-chip` stylings
-- Adjust `dx-datepicker` stylings
-- Adjust `dx-input-select` stylings
-- Adjust `dx-input-textfield` stylings
-- Adjust `dx-multiple-select-chip` stylings
-- Adjust `dx-snackbar` stylings
+- Checked and reworked all storybook stories
+- Adjusted `dx-chip` stylings
+- Adjusted `dx-datepicker` stylings
+- Adjusted `dx-input-select` stylings
+- Adjusted `dx-input-textfield` stylings
+- Adjusted `dx-multiple-select-chip` stylings
+- Adjusted `dx-snackbar` stylings
 
 ### Breaking changes
 - Removed `clearIconUrl` and `actionIconUrl` properties from `dx-input-textfield` component. Use `clearIcon` and `actionIcon` properties instead, which accept TemplateResult for enchanted-icons rendering.
-- Remove unused `error` property from the `dx-multiple-select-chip` component
-- Remove unused `color` property from the `dx-header` component
-- Change `dx-data-grid-generic` interface propertie types (isLoading, hasMiddlewareError, hasContentSourceAvailable, checkboxSelection)
-- Remove `dx-search-center-layout` component
-- Remove the `ignoreDisable` property from the `dx-input-textfield` component
-- Remove useless `open` property from `dx-menu` component
+- Removed unused `error` property from the `dx-multiple-select-chip` component
+- Removed unused `color` property from the `dx-header` component
+- Changed `dx-data-grid-generic` interface property types (isLoading, hasMiddlewareError, hasContentSourceAvailable, checkboxSelection)
+- Removed `dx-search-center-layout` component
+- Removed the `ignoreDisable` property from the `dx-input-textfield` component
+- Removed useless `open` property from `dx-menu` component
 - Changed `dx-dialog` focus behavior to immediately focus the first focusable element (prioritizing slotted content) instead of focusing the dialog element first.
 
 ## 1.4.0
