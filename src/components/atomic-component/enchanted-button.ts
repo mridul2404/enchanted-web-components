@@ -193,9 +193,12 @@ export class EnchantedButton extends EnchantedAcBaseElement {
         ?disabled=${this.disabled || nothing}
         @focus=${() => {return this.focused = true;}}
         @blur=${() => {return this.focused = false;}}
-        aria-label=${this.ariaLabel}
-        aria-haspopup=${this.ariaHasPopup}
-        ${this.ariaExpanded ? `aria-expanded="${this.ariaExpanded}"` : nothing}
+        @keydown=${this.handleKeyDown}
+        aria-label=${this.ariaLabel || 'Button'}
+        aria-haspopup=${this.ariaHasPopup || nothing}
+        aria-expanded=${this.ariaExpanded || nothing}
+        aria-disabled=${this.disabled ? 'true' : 'false'}
+        role="button"
         tabindex="0"
       >
         ${this.endicon ? nothing : this.renderIcon(this.endicon)}
@@ -207,6 +210,14 @@ export class EnchantedButton extends EnchantedAcBaseElement {
         ${this.endicon ? this.renderIcon(this.endicon) : nothing}
       </button>
     `;
+  }
+
+  private handleKeyDown(event: KeyboardEvent) {
+    if ((event.key === 'Enter' || event.key === ' ') && !this.disabled) {
+      event.preventDefault();
+      this._focusButton();
+      this.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
+    }
   }
 }
 

@@ -57,7 +57,7 @@ export class EnchantedIconButton extends EnchantedAcBaseElement {
   inverseColor = false;
 
   @property({ type: String })
-  ariaLabel: string = '';
+  ariaLabel: string = 'Icon button'; // Provide a default accessible name
 
   public _focusButton() {
     const button = this.renderRoot.querySelector('enchanted-button');
@@ -76,11 +76,24 @@ export class EnchantedIconButton extends EnchantedAcBaseElement {
         exportparts=${ICON_BUTTON_EXPORT_PARTS}
         ?disabled=${this.disabled}
         .icon=${this.icon}
-        ariaLabel=${this.ariaLabel}
+        aria-label=${this.ariaLabel} // Ensure aria-label is passed correctly
+        role="button" // Explicitly define the role
+        aria-disabled="${this.disabled ? 'true' : 'false'}" // Communicate disabled state
         @click=${this._handleClick}
+        @keydown=${this._handleKeyDown} // Add keyboard event listener
         >
         </enchanted-button>
       `;
+  }
+
+  private _handleKeyDown(event: KeyboardEvent) {
+    if (this.disabled) {
+      return;
+    }
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this._handleClick(event);
+    }
   }
 }
 
