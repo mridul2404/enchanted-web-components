@@ -28,16 +28,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-            chrome-version: stable
       - name: Install dependencies
         run: npm ci
       - name: Execute unit tests
-        run: |
-          # 1. Forcefully delete the corrupted temp folders from previous failed runs
+        run:
           rm -rf /tmp/chromedriver
           rm -rf /tmp/chrome
-          # 2. Run the tests, but strictly enforce a limit of 2 workers via CLI
           npm run test-unit -- --maxInstances 2
