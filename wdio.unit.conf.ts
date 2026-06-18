@@ -72,7 +72,8 @@ export const config = {
   // of the config file unless it's absolute.
   //
   specs: [
-    './src/_tests_/unit/**/*.test.ts'
+    // Wrapping the glob string in an inner array forces all 42 files into exactly ONE worker queue
+    ['./src/_tests_/unit/**/*.test.ts']
   ],
   // Patterns to exclude.
   exclude: [
@@ -105,8 +106,6 @@ export const config = {
     browserVersion: 'stable',
     'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
-      // Point directly to the native Google Chrome binary pre-installed on the Ubuntu runner
-      binary: '/usr/bin/google-chrome', 
       args: [
         '--no-sandbox',
         '--headless=new', // Use the modern headless engine flag

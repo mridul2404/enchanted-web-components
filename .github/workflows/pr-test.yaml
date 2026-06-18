@@ -32,10 +32,10 @@ jobs:
         run: npm ci
       - name: Execute unit tests
         run: |
-          # Purge any remaining corrupted files from previous failed actions
+          # Safe cleanup of legacy temporary directory locks
           rm -rf /tmp/chromedriver /tmp/chrome ./.wdio-cache
           
-          # This will now safely trigger both sequential runs with a single worker process each
-          npx wdio run ./wdio.unit.conf.ts --maxInstances=1
+          # Run the unit configurations cleanly
+          npx wdio run ./wdio.unit.conf.ts
         env:
           WDIO_PRESET: lit
