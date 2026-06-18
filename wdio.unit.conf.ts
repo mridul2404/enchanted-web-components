@@ -15,6 +15,25 @@
 
 import { tmpFolderCleanup } from './wdio-util';
 
+const browserVersion = process.env.BROWSER_VERSION || 'latest';
+const headlessMode = (process.env.HEADLESS_MODE || 'true') === 'true';
+
+// eslint-why: Using console.log here because a logger is not available in this context.
+// eslint-disable-next-line no-console
+console.log(`Running tests with the following configuration:
+- browserVersion: ${browserVersion}
+- headlessMode: ${headlessMode}
+`);
+
+const googchromeOptionsArgs: string[] = ['--no-sandbox', '--disable-dev-shm-usage'];
+if (headlessMode) {
+  googchromeOptionsArgs.push('--headless');
+}
+
+// eslint-why: Using console.log here because a logger is not available in this context.
+// eslint-disable-next-line no-console
+console.log(`Chrome options arguments: ${googchromeOptionsArgs}`);
+
 export const config = {
   // ====================
   // Runner Configuration
@@ -97,17 +116,11 @@ export const config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   capabilities: [{
-    // capabilities for local browser web tests
-    browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
-    // browserVersion: 'latest',
+    browserName: process.env.BROWSER_NAME || 'chrome', // or "firefox", "microsoftedge", "safari"
+    browserVersion,
     'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
-      args: [
-        '--no-sandbox',
-        '--headless',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-      ]
+      args: googchromeOptionsArgs,
     },
   }],
 

@@ -29,9 +29,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: npm ci
+        run:  npm ci
       - name: Execute unit tests
-        run: |
-          rm -rf /tmp/chromedriver
-          rm -rf /tmp/chrome
-          npm run test
+        run:  npm run test
+        env:
+          BROWSER_NAME: 'chrome'
+          BROWSER_VERSION: 'stable'
+          HEADLESS_MODE: 'true'
