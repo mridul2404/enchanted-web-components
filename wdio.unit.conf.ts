@@ -91,13 +91,12 @@ export const config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 2,
+  maxInstances: 1,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   capabilities: [{
-    maxInstances: 2,
     // capabilities for local browser web tests
     browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
     // browserVersion: 'latest',
@@ -107,7 +106,7 @@ export const config = {
         '--no-sandbox',
         '--headless',
         '--disable-dev-shm-usage',
-        '--disable-gpu' // Adding this is highly recommended for GitHub Actions
+        '--disable-gpu',
       ]
     },
   }],

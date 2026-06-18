@@ -31,4 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Execute unit tests
-        run: npm run test
+        run: rm -rf /tmp/chromedriver
+          rm -rf /tmp/chrome
+          npm run test
