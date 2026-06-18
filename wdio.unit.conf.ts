@@ -99,9 +99,10 @@ export const config = {
   capabilities: [{
     // capabilities for local browser web tests
     browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
-    browserVersion: 'latest',
+    // browserVersion: 'latest',
     'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
+      binary: process.env.CHROME_BIN || '/usr/bin/google-chrome',
       args: [
         '--no-sandbox',
         '--headless',
