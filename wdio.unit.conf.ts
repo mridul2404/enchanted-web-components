@@ -69,7 +69,9 @@ export const config = {
   // of the config file unless it's absolute.
   //
   specs: [
-    './src/_tests_/unit/**/*.test.ts'
+    [
+      './src/_tests_/unit/**/*.test.ts'
+    ]
   ],
   // Patterns to exclude.
   exclude: [
