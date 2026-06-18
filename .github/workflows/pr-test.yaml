@@ -32,6 +32,8 @@ jobs:
         run: npm ci
       - name: Execute unit tests
         run: |
-          rm -rf /tmp/chromedriver
-          rm -rf /tmp/chrome
-          npm run test
+          # Clean workspace completely before execution
+          rm -rf /tmp/chromedriver /tmp/chrome ./.wdio-cache
+          
+          # Force the CLI engine to strictly honor the single worker limitation
+          npx wdio run ./wdio.unit.conf.ts --maxInstances=1
