@@ -22,6 +22,7 @@ export const config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   // runner: 'browser',
   runner: ['browser', {
+    headless: true, // <--- THIS DISABLES XVFB AND STOPS THE SIGINT CRASH
     preset: process.env.WDIO_PRESET,
     coverage: {
       enabled: true,
@@ -102,6 +103,7 @@ export const config = {
     // capabilities for local browser web tests
     browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
     maxInstances: 1,
+    browserVersion: 'latest', // <--- Let WDIO natively download the matching pair
     // 'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
       // Force WDIO to use the system-installed Chrome
