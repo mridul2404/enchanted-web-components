@@ -102,7 +102,7 @@ export const config = {
     // capabilities for local browser web tests
     browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
     maxInstances: 1,
-    'wdio:enforceWebDriverClassic': true,
+    // 'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
       // Force WDIO to use the system-installed Chrome
       binary: process.env.CHROME_BIN || '/usr/bin/google-chrome',
