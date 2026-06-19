@@ -33,5 +33,5 @@ jobs:
       - name: Execute unit tests
         env:
           # This gives Node.js 6GB of memory to compile Vite without crashing
-          NODE_OPTIONS: "--max_old_space_size=6144"
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: npm run test
