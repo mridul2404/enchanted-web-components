@@ -20,7 +20,7 @@ on:
 jobs:
   build:
     name: PR check test
-    # THE REAL FIX: Drop back to 22.04 to bypass all the new OS security crashes
+    # FIXED: Pinned to 22.04 to bypass all the new Ubuntu 24.04 security crashes
     runs-on: ubuntu-22.04 
     steps:
       - uses: actions/setup-node@v4

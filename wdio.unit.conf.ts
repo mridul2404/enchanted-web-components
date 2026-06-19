@@ -24,8 +24,8 @@ export const config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   // runner: 'browser',
   runner: ['browser', {
-    headless: true, // <--- THIS DISABLES XVFB AND STOPS THE SIGINT CRASH
     preset: process.env.WDIO_PRESET,
+    headless: true, // Keep this to prevent Xvfb crashes
     coverage: {
       enabled: true,
       statements: 80.57,
