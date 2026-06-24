@@ -16,8 +16,6 @@
 import { tmpFolderCleanup } from './wdio-util';
 
 export const config = {
-  // 1. Force WDIO to download and unzip Chrome onto the main SSD, avoiding the /tmp crash!
-  cacheDir: process.cwd() + '/.wdio-cache',
   // ====================
   // Runner Configuration
   // ====================
@@ -25,7 +23,6 @@ export const config = {
   // runner: 'browser',
   runner: ['browser', {
     preset: process.env.WDIO_PRESET,
-    headless: true, // Keep this to prevent Xvfb crashes
     coverage: {
       enabled: true,
       statements: 80.57,
@@ -72,9 +69,7 @@ export const config = {
   // of the config file unless it's absolute.
   //
   specs: [
-    [
-      './src/_tests_/unit/**/*.test.ts'
-    ]
+    './src/_tests_/unit/**/*.test.ts'
   ],
   // Patterns to exclude.
   exclude: [
@@ -102,20 +97,15 @@ export const config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   capabilities: [{
-    browserName: 'chrome', 
-    maxInstances: 1,
-    // 1. Point to the local Chromedriver we will install
-    'wdio:chromedriverOptions': {
-      binary: '/usr/bin/chromedriver'
-    },
+    // capabilities for local browser web tests
+    browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
+    browserVersion: '148.0.7778.216',
+    'wdio:enforceWebDriverClassic': true,
     'goog:chromeOptions': {
-      // 2. Point to the local Chromium browser we will install
-      binary: '/usr/bin/chromium-browser',
       args: [
-        '--headless',
         '--no-sandbox',
+        '--headless',
         '--disable-dev-shm-usage',
-        '--disable-gpu'
       ]
     },
   }],
@@ -127,7 +117,7 @@ export const config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'debug',
+  logLevel: 'error',
   //
   // Set specific log levels per logger
   // loggers:
