@@ -97,16 +97,15 @@ export const config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   capabilities: [{
-    // capabilities for local browser web tests
-    browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
-    browserVersion: 'stable',
-    'wdio:enforceWebDriverClassic': true,
+    browserName: 'chrome',
     'goog:chromeOptions': {
+      binary: process.env.PUPPETEER_EXECUTABLE_PATH,
       args: [
-        '--no-sandbox',
         '--headless',
-        '--disable-dev-shm-usage',
-      ]
+        '--no-sandbox',              // required in CI (no root sandbox)
+        '--disable-dev-shm-usage',   // prevents /dev/shm out-of-memory crashes
+        '--disable-gpu',
+      ],
     },
   }],
 
