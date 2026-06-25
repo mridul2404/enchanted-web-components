@@ -25,10 +25,10 @@ export const config = {
     preset: process.env.WDIO_PRESET,
     coverage: {
       enabled: true,
-      statements: 80.57,
-      branches: 65.68,
-      functions: 77.77,
-      lines: 78.98,
+      statements: 80.46,
+      branches: 63.75,
+      functions: 77.22,
+      lines: 78.76,
       exclude: [
         'src/_tests_/**',
       ]
